@@ -9,7 +9,7 @@ const FEE_ADDRESS = Address.parse("UQA705AUWErQe9Ur56CZz-v6N9J2uw298w-31ZCu475hT
 const MIN_STORAGE = toNano(0.05);
 
 const connector = new TonConnectUI({
-    manifestUrl: manifest,
+    manifestUrl: window.location.origin + manifest,
     buttonRootId: "tonconnect"
 });
 
