@@ -1,0 +1,27 @@
+* {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.2;
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  margin: 5px;
+}
+
+#minter {
+  width: 500px;
+}
+
+#withdraw {
+  margin-top: 1.25rem;
+}
+
+.text-l {
+  font-size: 1.5rem;
+}
