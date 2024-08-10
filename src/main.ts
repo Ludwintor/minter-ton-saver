@@ -6,7 +6,7 @@ import manifest from "/tonconnect-manifest.json?url";
 const FEE_FACTOR = 100n;
 const FEE_BASE = 1000n;
 const FEE_ADDRESS = Address.parse("UQA705AUWErQe9Ur56CZz-v6N9J2uw298w-31ZCu475hT8U4");
-const ONE_TON = toNano(1);
+const MIN_STORAGE = toNano(0.05);
 
 const connector = new TonConnectUI({
     manifestUrl: manifest,
@@ -27,7 +27,7 @@ withdrawInput.addEventListener("change", () => {
     if (isNaN(parseFloat(withdrawInput.value)))
         return;
     const value = toNano(withdrawInput.value);
-    if (balance == null || value < ONE_TON || balance - ONE_TON - value <= 0n)
+    if (balance == null || value < MIN_STORAGE || balance - MIN_STORAGE - value <= 0n)
         clearWithdraw();
     else
         setWithdraw(value);
@@ -38,7 +38,7 @@ sendButton.addEventListener("click", async () => {
         return;
     }
     if (minter == null || balance == null ||
-        withdraw == null || withdraw < ONE_TON)
+        withdraw == null || withdraw < MIN_STORAGE)
         return;
     const owner = Address.parse(connector.account.address);
     const fee = getFee(withdraw);
@@ -82,8 +82,8 @@ sendButton.addEventListener("click", async () => {
             return;
         minter = Address.parse(minterInput.value);
         setBalance(await client.getBalance(minter));
-        if (balance != null && balance > ONE_TON)
-            setWithdraw(balance - ONE_TON);
+        if (balance != null && balance > MIN_STORAGE)
+            setWithdraw(balance - MIN_STORAGE);
     });
 })();
 
