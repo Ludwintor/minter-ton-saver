@@ -1,6 +1,6 @@
 * {
   font-weight: 700;
-  font-size: 14px;
+  font-size: 14px inherit;
   line-height: 1.2;
   box-sizing: border-box;
 }
